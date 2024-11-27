@@ -4,7 +4,7 @@ import random
 class Deck:
     suits = ["Hearts", "Diamonds", "Spades", "Clubs"]
     def __init__(self):
-        self.deck = [Card(suit, number) for suit in self.suits for number in range(1, 14)]
+        self.deck = self.resetDeck()
 
     def __repr__(self):
         return str(self)
@@ -44,3 +44,6 @@ class Deck:
         for i in range(250):
             self.__shuffleOneCard()
         return self.deck
+
+    def resetDeck(self):
+        return [Card(suit, number) for suit in self.suits for number in range(1, 14)]

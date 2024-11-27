@@ -15,10 +15,8 @@ class Game:
             self.player.printHand()
         if self.player.sumOfHand() == 21:
             print("Blackjack! You win!")
-            return
         elif self.player.sumOfHand() > 21:
             print("Bust! You lose!")
-            return
         
         self.dealer.printHand()
         while self.dealer.sumOfHand() < 16:
@@ -26,13 +24,23 @@ class Game:
             self.dealer.printHand()
         if self.dealer.sumOfHand() > 21:
             print("Dealer busts! You win!")
-            return
         elif self.dealer.sumOfHand() > self.player.sumOfHand():
             print("Dealer wins!")
         elif self.dealer.sumOfHand() == self.player.sumOfHand():
             print("Push!")
         else:
             print("You win!")
+
+        continueResponse = input("Keep playing? (y/n)")
+        if continueResponse in ["Y", "y"]:
+            self.playAgain()
+        return
+
+    def playAgain(self):
+        self.player.resetPlayer()
+        self.dealer.resetPlayer()
+        self.deck.resetDeck()
+        self.start()
 
     def askPlayerForHit(self):
         doesPlayerWantHit = input("Would you like to hit? (Y/N): ")

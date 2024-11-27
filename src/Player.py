@@ -33,6 +33,10 @@ class Player:
 
     def wantsToKeepPlaying(self):
         return self.playing
+    
+    def resetPlayer(self):
+        self.hand = []
+        self.playing = True
 
 class Dealer(Player):
     def drawSecondCard(self, deck):
